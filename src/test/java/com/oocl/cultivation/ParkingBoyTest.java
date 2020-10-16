@@ -10,7 +10,7 @@ class ParkingBoyTest {
     void should_return_parking_ticket_when_parking_given_a_car_to_parking_boy() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
 
         //when
         ParkingTicket ticket = parkingBoy.park(car);
@@ -22,7 +22,7 @@ class ParkingBoyTest {
     void should_return_correct_car_when_fetching_given_a_correct_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
         ParkingTicket parkingTicket = parkingBoy.park(car);
 
         //when
@@ -36,7 +36,7 @@ class ParkingBoyTest {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
         ParkingTicket parkingTicket1 = parkingBoy.park(car1);
         ParkingTicket parkingTicket2 = parkingBoy.park(car2);
 
@@ -51,7 +51,7 @@ class ParkingBoyTest {
     @Test
     void should_no_car_when_fetching_given_wrong_ticket() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
         ParkingTicket parkingTicket = new ParkingTicket();
 
         //when
@@ -64,7 +64,7 @@ class ParkingBoyTest {
     void should_no_car_when_fetching_given_used_ticket() {
         //given
         Car car = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
         ParkingTicket parkingTicket = parkingBoy.park(car);
         Car fetchedCar = parkingBoy.fetch(parkingTicket);
 
@@ -77,12 +77,24 @@ class ParkingBoyTest {
     @Test
     void should_no_car_when_fetching_given_no_ticket() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
 
         //when
         Car fetchedCar = parkingBoy.fetch(null);
 
         //then
         assertNull(fetchedCar);
+    }
+    @Test
+    void should_no_ticket_when_parking_given_1_parking_lot_capacity_and_park() {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        //when
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+        //then
+        assertNull(parkingTicket2);
     }
 }
