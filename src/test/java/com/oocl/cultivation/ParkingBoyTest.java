@@ -53,12 +53,11 @@ class ParkingBoyTest {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
         ParkingTicket parkingTicket = new ParkingTicket();
-
         //when
         //then
-        assertThrows(UnrecognizedParkingTicketException.class, () -> {
+        assertEquals("Unrecognized Parking Ticket",assertThrows(UnrecognizedParkingTicketException.class, () -> {
             parkingBoy.fetch(parkingTicket);
-        });
+        }).getMessage());
     }
     @Test
     void should_no_car_when_fetching_given_used_ticket() {
