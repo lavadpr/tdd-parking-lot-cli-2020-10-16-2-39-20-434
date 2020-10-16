@@ -68,10 +68,10 @@ class ParkingBoyTest {
         Car fetchedCar = parkingBoy.fetch(parkingTicket);
 
         //when
-        Car fetchedSameCar = parkingBoy.fetch(parkingTicket);
-
         //then
-        assertNull(fetchedSameCar);
+        assertEquals("Unrecognized Parking Ticket",assertThrows(UnrecognizedParkingTicketException.class, () -> {
+            parkingBoy.fetch(parkingTicket);
+        }).getMessage());
     }
     @Test
     void should_no_car_when_fetching_given_no_ticket() {
@@ -79,10 +79,10 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
 
         //when
-        Car fetchedCar = parkingBoy.fetch(null);
-
         //then
-        assertNull(fetchedCar);
+        assertEquals("Unrecognized Parking Ticket",assertThrows(UnrecognizedParkingTicketException.class, () -> {
+            parkingBoy.fetch(null);
+        }).getMessage());
     }
     @Test
     void should_no_ticket_when_parking_given_1_parking_lot_capacity_and_park() {
