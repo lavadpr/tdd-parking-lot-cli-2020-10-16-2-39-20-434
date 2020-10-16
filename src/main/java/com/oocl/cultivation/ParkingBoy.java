@@ -5,8 +5,7 @@ public class ParkingBoy {
     public ParkingBoy(ParkingLot parkingLot) {
     }
 
-
     public ParkingTicket park() {
-        return null;
+        return new ParkingTicket();
     }
 }
