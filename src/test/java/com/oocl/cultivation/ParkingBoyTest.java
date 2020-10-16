@@ -36,7 +36,7 @@ class ParkingBoyTest {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(2));
         ParkingTicket parkingTicket1 = parkingBoy.park(car1);
         ParkingTicket parkingTicket2 = parkingBoy.park(car2);
 
