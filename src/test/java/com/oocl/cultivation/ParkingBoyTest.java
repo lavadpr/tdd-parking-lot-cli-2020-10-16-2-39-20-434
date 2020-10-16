@@ -80,7 +80,7 @@ class ParkingBoyTest {
 
         //when
         //then
-        assertEquals("Unrecognized Parking Ticket",assertThrows(UnrecognizedParkingTicketException.class, () -> {
+        assertEquals("Please provide your parking ticket",assertThrows(UnrecognizedParkingTicketException.class, () -> {
             parkingBoy.fetch(null);
         }).getMessage());
     }
