@@ -49,7 +49,7 @@ class ParkingBoyTest {
         assertSame(car2, fetchedCar2);
     }
     @Test
-    void should_no_car_when_fetching_given_wrong_ticket() {
+    void should_no_car_and_unrecognized_parking_ticket_when_fetching_given_wrong_ticket() {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
         ParkingTicket parkingTicket = new ParkingTicket();
@@ -59,6 +59,9 @@ class ParkingBoyTest {
 
         //then
         assertNull(car);
+        assertThrows(UnrecognizedParkingTicketException.class, () -> {
+            parkingBoy.fetch(parkingTicket);
+        });
     }
     @Test
     void should_no_car_when_fetching_given_used_ticket() {
