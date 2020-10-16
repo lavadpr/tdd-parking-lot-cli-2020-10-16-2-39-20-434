@@ -97,4 +97,18 @@ class ParkingBoyTest {
         //then
         assertNull(parkingTicket2);
     }
+    @Test
+    void should_1_parking_lot_capacity_when_parking_and_fetching_given_1_parking_lot_capacity() {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        Car fetchedCar = parkingBoy.fetch(parkingTicket);
+
+        //then
+        assertEquals(1, parkingLot.getCapacity());
+    }
 }
