@@ -157,4 +157,44 @@ class ParkingBoyTest {
         assertEquals(8, parkingLot1.getCurrentCapacity());
         assertEquals(10, parkingLot2.getCurrentCapacity());
     }
+    @Test
+    void should_0_and_8_current_capacity_on_parking_lots_when_parking_given_2_parking_lots() {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        Car car4 = new Car();
+        Car car5 = new Car();
+        Car car6 = new Car();
+        Car car7 = new Car();
+        Car car8 = new Car();
+        Car car9 = new Car();
+        Car car10 = new Car();
+        Car car11 = new Car();
+        Car car12 = new Car();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        List<ParkingLot> parkingLots = new LinkedList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+        //when
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+        ParkingTicket parkingTicket3 = parkingBoy.park(car3);
+        ParkingTicket parkingTicket4 = parkingBoy.park(car4);
+        ParkingTicket parkingTicket5 = parkingBoy.park(car5);
+        ParkingTicket parkingTicket6 = parkingBoy.park(car6);
+        ParkingTicket parkingTicket7 = parkingBoy.park(car7);
+        ParkingTicket parkingTicket8 = parkingBoy.park(car8);
+        ParkingTicket parkingTicket9 = parkingBoy.park(car9);
+        ParkingTicket parkingTicket10 = parkingBoy.park(car10);
+        ParkingTicket parkingTicket11 = parkingBoy.park(car11);
+        ParkingTicket parkingTicket12 = parkingBoy.park(car12);
+
+        //then
+        assertEquals(0, parkingLot1.getCurrentCapacity());
+        assertEquals(8, parkingLot2.getCurrentCapacity());
+    }
 }
