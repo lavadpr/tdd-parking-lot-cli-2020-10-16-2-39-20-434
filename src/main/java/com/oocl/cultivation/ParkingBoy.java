@@ -3,13 +3,14 @@ package com.oocl.cultivation;
 import java.util.List;
 
 public class ParkingBoy {
-    private List<ParkingLot> parkingLots;
+    public List<ParkingLot> parkingLots;
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
 
     public ParkingTicket park(Car car) {
+        parkingLots.forEach(parkingLot -> {});
         for (ParkingLot parkingLot : parkingLots) {
             try {
                 return parkingLot.park(car);
