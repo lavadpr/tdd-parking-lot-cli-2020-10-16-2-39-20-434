@@ -12,16 +12,15 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingLot parkingLot = parkingLots.get(currentParkingLot);
-        if(parkingLot.isFull()){
+        if(parkingLots.get(currentParkingLot).isFull() && currentParkingLot != parkingLots.size()-1){
             currentParkingLot++;
         }
-        return parkingLot.park(car);
+        return parkingLots.get(currentParkingLot).park(car);
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
         ParkingLot parkingLot = parkingLots.get(currentParkingLot);
-        if(parkingLot.isEmpty()){
+        if(parkingLot.isEmpty() && currentParkingLot != 0){
             currentParkingLot--;
         }
         return parkingLot.fetch(parkingTicket);
