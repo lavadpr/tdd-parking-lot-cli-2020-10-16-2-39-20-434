@@ -277,27 +277,23 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket18 = parkingBoy.park(car);
         ParkingTicket parkingTicket19 = parkingBoy.park(car);
         ParkingTicket parkingTicket20 = parkingBoy.park(car);
+        ParkingTicket parkingTicket21 = parkingBoy.park(car);
+        ParkingTicket parkingTicket22 = parkingBoy.park(car);
+        ParkingTicket parkingTicket23 = parkingBoy.park(car);
+        ParkingTicket parkingTicket24 = parkingBoy.park(car);
+        ParkingTicket parkingTicket25 = parkingBoy.park(car);
+        ParkingTicket parkingTicket26 = parkingBoy.park(car);
+        ParkingTicket parkingTicket27 = parkingBoy.park(car);
+        ParkingTicket parkingTicket28 = parkingBoy.park(car);
+        ParkingTicket parkingTicket29 = parkingBoy.park(car);
+        ParkingTicket parkingTicket30 = parkingBoy.park(car);
 
-//        ParkingTicket parkingTicket3 = parkingBoy.park(car3);
-//        ParkingTicket parkingTicket4 = parkingBoy.park(car4);
-//        ParkingTicket parkingTicket5 = parkingBoy.park(car5);
-//        ParkingTicket parkingTicket6 = parkingBoy.park(car6);
-//        ParkingTicket parkingTicket7 = parkingBoy.park(car7);
-//        ParkingTicket parkingTicket8 = parkingBoy.park(car8);
-//        ParkingTicket parkingTicket9 = parkingBoy.park(car9);
-//        ParkingTicket parkingTicket10 = parkingBoy.park(car10);
-//        ParkingTicket parkingTicket11 = parkingBoy.park(car11);
-//        ParkingTicket parkingTicket12 = parkingBoy.park(car12);
-//        car11 = parkingBoy.fetch(parkingTicket11);
-//        car2 = parkingBoy.fetch(parkingTicket2);
-//        ParkingTicket parkingTicket13 = parkingBoy.park(car1);
-//        car12 = parkingBoy.fetch(parkingTicket12);
-//        ParkingTicket parkingTicket14 = parkingBoy.park(car12);
-//        car12 = parkingBoy.fetch(parkingTicket12);
+
+
 
         //then
-        assertEquals(3, parkingLot1.getCurrentCapacity());
-        assertEquals(3, parkingLot2.getCurrentCapacity());
-        assertEquals(4, parkingLot3.getCurrentCapacity());
+        assertEquals(0, parkingLot1.getCurrentCapacity());
+        assertEquals(0, parkingLot2.getCurrentCapacity());
+        assertEquals(0, parkingLot3.getCurrentCapacity());
     }
 }

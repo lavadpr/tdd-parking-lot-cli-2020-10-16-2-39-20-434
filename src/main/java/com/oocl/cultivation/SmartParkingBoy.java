@@ -11,19 +11,9 @@ public class SmartParkingBoy extends ParkingBoy{
 
     public ParkingTicket park(Car car) {
         ParkingLot parkingLot = parkingLots.stream().max(Comparator.comparing(ParkingLot::getCurrentCapacity)).get();
-        return parkingLot.park(car);
-    }
-
-    public Car fetch(ParkingTicket parkingTicket) {
-        if(parkingTicket != null){
-            for (ParkingLot parkingLot : parkingLots) {
-                try {
-                    return parkingLot.fetch(parkingTicket);
-                } catch (ParkingException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        } else throw new ParkingException("Please provide your parking ticket");
+        if(parkingLot.getCurrentCapacity() != 0) {
+            return parkingLot.park(car);
+        }
+        throw new ParkingException("Not enough position.");
     }
 }
