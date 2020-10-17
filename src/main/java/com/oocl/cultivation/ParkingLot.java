@@ -21,8 +21,7 @@ public class ParkingLot {
             ticketCarMap.put(ticket, car);
             capacity--;
             return ticket;
-        }
-        return null;
+        } else throw new ParkingException("Not enough position.");
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
