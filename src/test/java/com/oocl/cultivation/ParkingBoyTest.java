@@ -137,5 +137,24 @@ class ParkingBoyTest {
         //then
         assertEquals(1, parkingLot.getCurrentCapacity());
     }
+    @Test
+    void should_8_and_10_current_capacity_on_parking_lots_when_parking_2_times_given_2_parking_lots() {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        List<ParkingLot> parkingLots = new LinkedList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
 
+        //when
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+
+        //then
+        assertEquals(8, parkingLot1.getCurrentCapacity());
+        assertEquals(10, parkingLot2.getCurrentCapacity());
+    }
 }
