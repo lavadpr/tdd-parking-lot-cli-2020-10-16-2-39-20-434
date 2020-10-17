@@ -4,9 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private final Map<ParkingTicket, Car> ticketCarMap = new HashMap<>();
+    private Map<ParkingTicket, Car> ticketCarMap = new HashMap<>();
     private int currentCapacity;
     private final int totalCapacity;
+
+    public Map<ParkingTicket, Car> getTicketCarMap() {
+        return ticketCarMap;
+    }
 
     public int getCurrentCapacity() {
         return currentCapacity;
@@ -25,20 +29,16 @@ public class ParkingLot {
 
     ParkingTicket park(Car car) {
         ParkingTicket ticket = new ParkingTicket();
-        if (currentCapacity != 0) {
-            ticketCarMap.put(ticket, car);
-            currentCapacity--;
-            return ticket;
-        } else throw new ParkingException("Not enough position.");
+        ticketCarMap.put(ticket, car);
+        currentCapacity--;
+        return ticket;
     }
 
     Car fetch(ParkingTicket parkingTicket) {
         Car car = ticketCarMap.get(parkingTicket);
-        if (car != null) {
-            ticketCarMap.remove(parkingTicket);
-            currentCapacity++;
-            return car;
-        } else throw new ParkingException("Unrecognized Parking Ticket");
+        ticketCarMap.remove(parkingTicket);
+        currentCapacity++;
+        return car;
     }
 
 }

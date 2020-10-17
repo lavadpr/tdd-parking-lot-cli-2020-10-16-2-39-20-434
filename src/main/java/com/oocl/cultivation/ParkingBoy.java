@@ -10,27 +10,22 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        parkingLots.forEach(parkingLot -> {});
         for (ParkingLot parkingLot : parkingLots) {
-            try {
+            if(parkingLot.getCurrentCapacity() != 0) {
                 return parkingLot.park(car);
-            } catch (ParkingException e) {
-                e.printStackTrace();
             }
         }
-        return null;
+        throw new ParkingException("Not enough position.");
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
         if(parkingTicket != null){
             for (ParkingLot parkingLot : parkingLots) {
-                try {
+                if(parkingLot.getTicketCarMap().get(parkingTicket) != null) {
                     return parkingLot.fetch(parkingTicket);
-                } catch (ParkingException e) {
-                    e.printStackTrace();
                 }
             }
-            return null;
+            throw new ParkingException("Unrecognized Parking Ticket");
         } else throw new ParkingException("Please provide your parking ticket");
     }
 }
