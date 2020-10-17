@@ -1,17 +1,19 @@
 package com.oocl.cultivation;
 
-public class ParkingBoy {
-    private ParkingLot parkingLot;
+import java.util.List;
 
-    public ParkingBoy(ParkingLot parkingLot) {
+public class ParkingBoy {
+    private List<ParkingLot> parkingLot;
+
+    public ParkingBoy(List<ParkingLot> parkingLot) {
         this.parkingLot = parkingLot;
     }
 
-    public ParkingTicket park(Car car) {
-       return parkingLot.park(car);
+    public ParkingTicket park(int parkingLotNumber, Car car) {
+        return parkingLot.get(parkingLotNumber).park(car);
     }
 
-    public Car fetch(ParkingTicket parkingTicket) {
-        return parkingLot.fetch(parkingTicket);
+    public Car fetch(int parkingLotnumber, ParkingTicket parkingTicket) {
+        return parkingLot.get(parkingLotnumber).fetch(parkingTicket);
     }
 }

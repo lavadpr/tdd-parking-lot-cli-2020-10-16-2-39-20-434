@@ -15,6 +15,11 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
+    public ParkingLot() {
+        capacity = 10;
+    }
+
+
     public ParkingTicket park(Car car) {
         ParkingTicket ticket = new ParkingTicket();
         if(capacity != 0){
