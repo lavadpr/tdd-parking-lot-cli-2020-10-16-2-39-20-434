@@ -5,39 +5,49 @@ import java.util.Map;
 
 public class ParkingLot {
     private final Map<ParkingTicket, Car> ticketCarMap = new HashMap<>();
-    private int capacity;
+    private int currentCapacity;
+    private final int totalCapacity;
 
-    public int getCapacity() {
-        return capacity;
+    public int getCurrentCapacity() {
+        return currentCapacity;
     }
 
-    public ParkingLot(int capacity) {
-        this.capacity = capacity;
+    public ParkingLot(int currentCapacity) {
+        this.currentCapacity = currentCapacity;
+        totalCapacity = currentCapacity;
     }
 
     public ParkingLot() {
-        capacity = 10;
+        currentCapacity = 10;
+        totalCapacity = currentCapacity;
     }
 
 
-    public ParkingTicket park(Car car) {
+    ParkingTicket park(Car car) {
         ParkingTicket ticket = new ParkingTicket();
-        if(capacity != 0){
+        if (!isFull()) {
             ticketCarMap.put(ticket, car);
-            capacity--;
+            currentCapacity--;
             return ticket;
         } else throw new ParkingException("Not enough position.");
     }
 
-    public Car fetch(ParkingTicket parkingTicket) {
-        if(parkingTicket != null) {
+    Car fetch(ParkingTicket parkingTicket) {
+        if (parkingTicket != null) {
             Car car = ticketCarMap.get(parkingTicket);
             if (car != null) {
                 ticketCarMap.remove(parkingTicket);
-                capacity++;
+                currentCapacity++;
                 return car;
             } else throw new ParkingException("Unrecognized Parking Ticket");
         } else throw new ParkingException("Please provide your parking ticket");
+    }
 
+    boolean isFull() {
+        return currentCapacity == 0;
+    }
+
+    boolean isEmpty() {
+        return totalCapacity == currentCapacity;
     }
 }

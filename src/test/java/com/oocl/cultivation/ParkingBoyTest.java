@@ -1,6 +1,5 @@
 package com.oocl.cultivation;
 
-import net.bytebuddy.dynamic.scaffold.MethodGraph;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -20,7 +19,7 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
 
         //when
-        ParkingTicket ticket = parkingBoy.park(0,car);
+        ParkingTicket ticket = parkingBoy.park(car);
 
         //then
         assertNotNull(ticket);
@@ -33,10 +32,10 @@ class ParkingBoyTest {
         List<ParkingLot> parkingLots = new LinkedList<>();
         parkingLots.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        ParkingTicket parkingTicket = parkingBoy.park(0,car);
+        ParkingTicket parkingTicket = parkingBoy.park(car);
 
         //when
-        Car fetchedCar = parkingBoy.fetch(0,parkingTicket);
+        Car fetchedCar = parkingBoy.fetch(parkingTicket);
 
         //then
         assertSame(car, fetchedCar);
@@ -50,12 +49,12 @@ class ParkingBoyTest {
         List<ParkingLot> parkingLots = new LinkedList<>();
         parkingLots.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        ParkingTicket parkingTicket1 = parkingBoy.park(0,car1);
-        ParkingTicket parkingTicket2 = parkingBoy.park(0,car2);
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
 
         //when
-        Car fetchedCar1 = parkingBoy.fetch(0,parkingTicket1);
-        Car fetchedCar2 = parkingBoy.fetch(0,parkingTicket2);
+        Car fetchedCar1 = parkingBoy.fetch(parkingTicket1);
+        Car fetchedCar2 = parkingBoy.fetch(parkingTicket2);
 
         //then
         assertSame(car1, fetchedCar1);
@@ -72,7 +71,7 @@ class ParkingBoyTest {
         //when
         //then
         assertEquals("Unrecognized Parking Ticket",assertThrows(ParkingException.class, () -> {
-            parkingBoy.fetch(0,parkingTicket);
+            parkingBoy.fetch(parkingTicket);
         }).getMessage());
     }
     @Test
@@ -83,13 +82,13 @@ class ParkingBoyTest {
         List<ParkingLot> parkingLots = new LinkedList<>();
         parkingLots.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        ParkingTicket parkingTicket = parkingBoy.park(0,car);
-        Car fetchedCar = parkingBoy.fetch(0,parkingTicket);
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        Car fetchedCar = parkingBoy.fetch(parkingTicket);
 
         //when
         //then
         assertEquals("Unrecognized Parking Ticket",assertThrows(ParkingException.class, () -> {
-            parkingBoy.fetch(0,parkingTicket);
+            parkingBoy.fetch(parkingTicket);
         }).getMessage());
     }
     @Test
@@ -103,7 +102,7 @@ class ParkingBoyTest {
         //when
         //then
         assertEquals("Please provide your parking ticket",assertThrows(ParkingException.class, () -> {
-            parkingBoy.fetch(0,null);
+            parkingBoy.fetch(null);
         }).getMessage());
     }
     @Test
@@ -115,11 +114,11 @@ class ParkingBoyTest {
         List<ParkingLot> parkingLots = new LinkedList<>();
         parkingLots.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        ParkingTicket parkingTicket1 = parkingBoy.park(0,car1);
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
         //when
         //then
         assertEquals("Not enough position.",assertThrows(ParkingException.class, () -> {
-            parkingBoy.park(0,car2);
+            parkingBoy.park(car2);
         }).getMessage());
     }
     @Test
@@ -132,10 +131,11 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
 
         //when
-        ParkingTicket parkingTicket = parkingBoy.park(0,car);
-        Car fetchedCar = parkingBoy.fetch(0,parkingTicket);
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        Car fetchedCar = parkingBoy.fetch(parkingTicket);
 
         //then
-        assertEquals(1, parkingLot.getCapacity());
+        assertEquals(1, parkingLot.getCurrentCapacity());
     }
+
 }
