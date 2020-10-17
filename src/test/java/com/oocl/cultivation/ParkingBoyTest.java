@@ -55,7 +55,7 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket = new ParkingTicket();
         //when
         //then
-        assertEquals("Unrecognized Parking Ticket",assertThrows(UnrecognizedParkingTicketException.class, () -> {
+        assertEquals("Unrecognized Parking Ticket",assertThrows(ParkingException.class, () -> {
             parkingBoy.fetch(parkingTicket);
         }).getMessage());
     }
@@ -69,7 +69,7 @@ class ParkingBoyTest {
 
         //when
         //then
-        assertEquals("Unrecognized Parking Ticket",assertThrows(UnrecognizedParkingTicketException.class, () -> {
+        assertEquals("Unrecognized Parking Ticket",assertThrows(ParkingException.class, () -> {
             parkingBoy.fetch(parkingTicket);
         }).getMessage());
     }
@@ -80,7 +80,7 @@ class ParkingBoyTest {
 
         //when
         //then
-        assertEquals("Please provide your parking ticket",assertThrows(UnrecognizedParkingTicketException.class, () -> {
+        assertEquals("Please provide your parking ticket",assertThrows(ParkingException.class, () -> {
             parkingBoy.fetch(null);
         }).getMessage());
     }

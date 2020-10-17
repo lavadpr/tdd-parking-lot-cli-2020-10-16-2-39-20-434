@@ -26,13 +26,14 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        Car car =  ticketCarMap.get(parkingTicket);
-        if(car != null) {
-            ticketCarMap.remove(parkingTicket);
-            capacity++;
-            return car;
-        } else {
-            throw new UnrecognizedParkingTicketException("Unrecognized Parking Ticket");
-        }
+        if(parkingTicket != null) {
+            Car car = ticketCarMap.get(parkingTicket);
+            if (car != null) {
+                ticketCarMap.remove(parkingTicket);
+                capacity++;
+                return car;
+            } else throw new ParkingException("Unrecognized Parking Ticket");
+        } else throw new ParkingException("Please provide your parking ticket");
+
     }
 }
