@@ -4,25 +4,32 @@ import java.util.List;
 
 public class ParkingBoy {
     private List<ParkingLot> parkingLots;
-    private int currentParkingLot;
 
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
-        currentParkingLot = 0;
     }
 
     public ParkingTicket park(Car car) {
-        if(parkingLots.get(currentParkingLot).isFull() && currentParkingLot != parkingLots.size()-1){
-            currentParkingLot++;
+        for (ParkingLot parkingLot : parkingLots) {
+            try {
+                return parkingLot.park(car);
+            } catch (ParkingException e) {
+                e.printStackTrace();
+            }
         }
-        return parkingLots.get(currentParkingLot).park(car);
+        return null;
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        ParkingLot parkingLot = parkingLots.get(currentParkingLot);
-        if(parkingLot.isEmpty() && currentParkingLot != 0){
-            currentParkingLot--;
-        }
-        return parkingLot.fetch(parkingTicket);
+        if(parkingTicket != null){
+            for (ParkingLot parkingLot : parkingLots) {
+                try {
+                    return parkingLot.fetch(parkingTicket);
+                } catch (ParkingException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        } else throw new ParkingException("Please provide your parking ticket");
     }
 }

@@ -25,7 +25,7 @@ public class ParkingLot {
 
     ParkingTicket park(Car car) {
         ParkingTicket ticket = new ParkingTicket();
-        if (!isFull()) {
+        if (currentCapacity != 0) {
             ticketCarMap.put(ticket, car);
             currentCapacity--;
             return ticket;
@@ -33,21 +33,12 @@ public class ParkingLot {
     }
 
     Car fetch(ParkingTicket parkingTicket) {
-        if (parkingTicket != null) {
-            Car car = ticketCarMap.get(parkingTicket);
-            if (car != null) {
-                ticketCarMap.remove(parkingTicket);
-                currentCapacity++;
-                return car;
-            } else throw new ParkingException("Unrecognized Parking Ticket");
-        } else throw new ParkingException("Please provide your parking ticket");
+        Car car = ticketCarMap.get(parkingTicket);
+        if (car != null) {
+            ticketCarMap.remove(parkingTicket);
+            currentCapacity++;
+            return car;
+        } else throw new ParkingException("Unrecognized Parking Ticket");
     }
 
-    boolean isFull() {
-        return currentCapacity == 0;
-    }
-
-    boolean isEmpty() {
-        return totalCapacity == currentCapacity;
-    }
 }
