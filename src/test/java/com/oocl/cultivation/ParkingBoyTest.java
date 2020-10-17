@@ -92,9 +92,10 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(1));
         ParkingTicket parkingTicket1 = parkingBoy.park(car1);
         //when
-        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
         //then
-        assertNull(parkingTicket2);
+        assertEquals("Not enough position.",assertThrows(ParkingException.class, () -> {
+            parkingBoy.park(car2);
+        }).getMessage());
     }
     @Test
     void should_1_parking_lot_capacity_when_parking_and_fetching_given_1_parking_lot_capacity() {
