@@ -242,7 +242,7 @@ class ParkingBoyTest {
         assertEquals(9, parkingLot2.getCurrentCapacity());
     }
     @Test
-    void should_3_3_3_current_capacity_on_parking_lots_when_parking_given_3_parking_lots_and_smart() {
+    void should_0_0_0_current_capacity_on_parking_lots_when_parking_given_3_parking_lots_and_smart() {
         //given
         Car car = new Car();
         ParkingLot parkingLot1 = new ParkingLot();
@@ -289,6 +289,101 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket30 = parkingBoy.park(car);
 
 
+
+
+        //then
+        assertEquals(0, parkingLot1.getCurrentCapacity());
+        assertEquals(0, parkingLot2.getCurrentCapacity());
+        assertEquals(0, parkingLot3.getCurrentCapacity());
+    }
+
+    @Test
+    void should_0_0_current_capacity_on_parking_lots_when_parking_given_3_parking_lots_and_smart() {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        ParkingLot parkingLot3 = new ParkingLot();
+        List<ParkingLot> parkingLots = new LinkedList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        parkingLots.add(parkingLot3);
+        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+
+        //when
+        ParkingTicket parkingTicket1 = parkingBoy.park(car);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car);
+        ParkingTicket parkingTicket3 = parkingBoy.park(car);
+        ParkingTicket parkingTicket4 = parkingBoy.park(car);
+        ParkingTicket parkingTicket5 = parkingBoy.park(car);
+        ParkingTicket parkingTicket6 = parkingBoy.park(car);
+        ParkingTicket parkingTicket7 = parkingBoy.park(car);
+        ParkingTicket parkingTicket8 = parkingBoy.park(car);
+        ParkingTicket parkingTicket9 = parkingBoy.park(car);
+        ParkingTicket parkingTicket10 = parkingBoy.park(car);
+        ParkingTicket parkingTicket11 = parkingBoy.park(car);
+        ParkingTicket parkingTicket12 = parkingBoy.park(car);
+        ParkingTicket parkingTicket13 = parkingBoy.park(car);
+        ParkingTicket parkingTicket14 = parkingBoy.park(car);
+        ParkingTicket parkingTicket15 = parkingBoy.park(car);
+        ParkingTicket parkingTicket16 = parkingBoy.park(car);
+        ParkingTicket parkingTicket17 = parkingBoy.park(car);
+        ParkingTicket parkingTicket18 = parkingBoy.park(car);
+        ParkingTicket parkingTicket19 = parkingBoy.park(car);
+        ParkingTicket parkingTicket20 = parkingBoy.park(car);
+        ParkingTicket parkingTicket21 = parkingBoy.park(car);
+        ParkingTicket parkingTicket22 = parkingBoy.park(car);
+        ParkingTicket parkingTicket23 = parkingBoy.park(car);
+        ParkingTicket parkingTicket24 = parkingBoy.park(car);
+        ParkingTicket parkingTicket25 = parkingBoy.park(car);
+        ParkingTicket parkingTicket26 = parkingBoy.park(car);
+        ParkingTicket parkingTicket27 = parkingBoy.park(car);
+        ParkingTicket parkingTicket28 = parkingBoy.park(car);
+        ParkingTicket parkingTicket29 = parkingBoy.park(car);
+        ParkingTicket parkingTicket30 = parkingBoy.park(car);
+        parkingBoy.fetch(parkingTicket30);
+        parkingBoy.fetch(parkingTicket27);
+        parkingBoy.fetch(parkingTicket1);
+        ParkingTicket parkingTicket31 = parkingBoy.park(car);
+        ParkingTicket parkingTicket32 = parkingBoy.park(car);
+
+        //then
+        assertEquals(0, parkingLot1.getCurrentCapacity());
+        assertEquals(0, parkingLot2.getCurrentCapacity());
+        assertEquals(1, parkingLot3.getCurrentCapacity());
+    }
+
+    @Test
+    void should_correct_current_capacity_when_parking_given_3_parking_lots_and_super_smart() {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(10);
+        ParkingLot parkingLot2 = new ParkingLot(5);
+        ParkingLot parkingLot3 = new ParkingLot(2);
+        List<ParkingLot> parkingLots = new LinkedList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        parkingLots.add(parkingLot3);
+        SuperSmartParkingBoy parkingBoy = new SuperSmartParkingBoy(parkingLots);
+
+        //when
+        ParkingTicket parkingTicket1 = parkingBoy.park(car);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car);
+        ParkingTicket parkingTicket3 = parkingBoy.park(car);
+        ParkingTicket parkingTicket4 = parkingBoy.park(car);
+        ParkingTicket parkingTicket5 = parkingBoy.park(car);
+        ParkingTicket parkingTicket6 = parkingBoy.park(car);
+        ParkingTicket parkingTicket7 = parkingBoy.park(car);
+        ParkingTicket parkingTicket8 = parkingBoy.park(car);
+        ParkingTicket parkingTicket9 = parkingBoy.park(car);
+        ParkingTicket parkingTicket10 = parkingBoy.park(car);
+        ParkingTicket parkingTicket11 = parkingBoy.park(car);
+        ParkingTicket parkingTicket12 = parkingBoy.park(car);
+        ParkingTicket parkingTicket13 = parkingBoy.park(car);
+        ParkingTicket parkingTicket14 = parkingBoy.park(car);
+        ParkingTicket parkingTicket15 = parkingBoy.park(car);
+        ParkingTicket parkingTicket16 = parkingBoy.park(car);
+        ParkingTicket parkingTicket17 = parkingBoy.park(car);
 
 
         //then
