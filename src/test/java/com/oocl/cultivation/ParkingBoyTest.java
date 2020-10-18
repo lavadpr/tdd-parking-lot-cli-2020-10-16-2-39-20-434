@@ -24,6 +24,7 @@ class ParkingBoyTest {
         //then
         assertNotNull(ticket);
     }
+
     @Test
     void should_return_correct_car_when_fetching_given_a_correct_ticket() {
         //given
@@ -40,6 +41,7 @@ class ParkingBoyTest {
         //then
         assertSame(car, fetchedCar);
     }
+
     @Test
     void should_return_correct_two_cars_when_fetching_given_two_cars_to_parking_boy_and_park() {
         //given
@@ -60,6 +62,7 @@ class ParkingBoyTest {
         assertSame(car1, fetchedCar1);
         assertSame(car2, fetchedCar2);
     }
+
     @Test
     void should_no_car_and_unrecognized_parking_ticket_when_fetching_given_wrong_ticket() {
         //given
@@ -70,10 +73,11 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket = new ParkingTicket();
         //when
         //then
-        assertEquals("Unrecognized Parking Ticket",assertThrows(ParkingException.class, () -> {
+        assertEquals("Unrecognized Parking Ticket", assertThrows(ParkingException.class, () -> {
             parkingBoy.fetch(parkingTicket);
         }).getMessage());
     }
+
     @Test
     void should_no_car_when_fetching_given_used_ticket() {
         //given
@@ -86,10 +90,11 @@ class ParkingBoyTest {
         Car fetchedCar = parkingBoy.fetch(parkingTicket);
         //when
         //then
-        assertEquals("Unrecognized Parking Ticket",assertThrows(ParkingException.class, () -> {
+        assertEquals("Unrecognized Parking Ticket", assertThrows(ParkingException.class, () -> {
             parkingBoy.fetch(parkingTicket);
         }).getMessage());
     }
+
     @Test
     void should_no_car_when_fetching_given_no_ticket() {
         //given
@@ -100,10 +105,11 @@ class ParkingBoyTest {
 
         //when
         //then
-        assertEquals("Please provide your parking ticket",assertThrows(ParkingException.class, () -> {
+        assertEquals("Please provide your parking ticket", assertThrows(ParkingException.class, () -> {
             parkingBoy.fetch(null);
         }).getMessage());
     }
+
     @Test
     void should_no_ticket_when_parking_given_1_parking_lot_capacity_and_park() {
         //given
@@ -116,10 +122,11 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket1 = parkingBoy.park(car1);
         //when
         //then
-        assertEquals("Not enough position.",assertThrows(ParkingException.class, () -> {
+        assertEquals("Not enough position.", assertThrows(ParkingException.class, () -> {
             parkingBoy.park(car2);
         }).getMessage());
     }
+
     @Test
     void should_1_parking_lot_capacity_when_parking_and_fetching_given_1_parking_lot_capacity() {
         //given
@@ -136,6 +143,7 @@ class ParkingBoyTest {
         //then
         assertEquals(1, parkingLot.getCurrentCapacity());
     }
+
     @Test
     void should_8_and_10_current_capacity_on_parking_lots_when_parking_2_times_given_2_parking_lots() {
         //given
@@ -156,6 +164,7 @@ class ParkingBoyTest {
         assertEquals(8, parkingLot1.getCurrentCapacity());
         assertEquals(10, parkingLot2.getCurrentCapacity());
     }
+
     @Test
     void should_0_and_8_current_capacity_on_parking_lots_when_parking_given_2_parking_lots() {
         //given
@@ -196,6 +205,7 @@ class ParkingBoyTest {
         assertEquals(0, parkingLot1.getCurrentCapacity());
         assertEquals(8, parkingLot2.getCurrentCapacity());
     }
+
     @Test
     void should_0_and_9_current_capacity_on_parking_lots_when_parking_and_fetching_given_2_parking_lots() {
         //given
@@ -241,6 +251,7 @@ class ParkingBoyTest {
         assertEquals(0, parkingLot1.getCurrentCapacity());
         assertEquals(9, parkingLot2.getCurrentCapacity());
     }
+
     @Test
     void should_0_0_0_current_capacity_on_parking_lots_when_parking_given_3_parking_lots_and_smart() {
         //given
@@ -287,8 +298,6 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket28 = parkingBoy.park(car);
         ParkingTicket parkingTicket29 = parkingBoy.park(car);
         ParkingTicket parkingTicket30 = parkingBoy.park(car);
-
-
 
 
         //then
@@ -381,14 +390,12 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket12 = parkingBoy.park(car);
         ParkingTicket parkingTicket13 = parkingBoy.park(car);
         ParkingTicket parkingTicket14 = parkingBoy.park(car);
-        ParkingTicket parkingTicket15 = parkingBoy.park(car);
-        ParkingTicket parkingTicket16 = parkingBoy.park(car);
-        ParkingTicket parkingTicket17 = parkingBoy.park(car);
-
+        parkingBoy.fetch(parkingTicket1);
+        parkingBoy.fetch(parkingTicket3);
 
         //then
-        assertEquals(0, parkingLot1.getCurrentCapacity());
-        assertEquals(0, parkingLot2.getCurrentCapacity());
-        assertEquals(0, parkingLot3.getCurrentCapacity());
+        assertEquals(3, parkingLot1.getCurrentCapacity());
+        assertEquals(1, parkingLot2.getCurrentCapacity());
+        assertEquals(1, parkingLot3.getCurrentCapacity());
     }
 }
