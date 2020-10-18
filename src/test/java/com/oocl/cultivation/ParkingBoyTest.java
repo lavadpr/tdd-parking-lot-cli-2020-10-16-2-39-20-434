@@ -471,11 +471,64 @@ class ParkingBoyTest {
         ParkingTicket parkingTicket5 = serviceManager.park(parkingBoy1, car);
         ParkingTicket parkingTicket6 = serviceManager.park(parkingBoy2, car);
         ParkingTicket parkingTicket7 = serviceManager.park(parkingBoy2, car);
-        car = serviceManager.fetch(parkingBoy1, parkingTicket7);
+        car = serviceManager.fetch(parkingBoy2, parkingTicket2);
 
         //then
         assertEquals(8, parkingLot1.getCurrentCapacity());
         assertEquals(2, parkingLot2.getCurrentCapacity());
+        assertEquals(1, parkingLot3.getCurrentCapacity());
+    }
+
+    @Test
+    void should_current_capacity_when_parking_and_fetching_given_service_manager_parking_boy() {
+        //given
+        Car car = new Car();
+
+        ParkingLot parkingLot1 = new ParkingLot(10);
+        ParkingLot parkingLot2 = new ParkingLot(5);
+        ParkingLot parkingLot3 = new ParkingLot(2);
+
+        List<ParkingLot> parkingLots1 = new LinkedList<>();
+        parkingLots1.add(parkingLot1); //10
+        parkingLots1.add(parkingLot2); //5
+        parkingLots1.add(parkingLot3); //2
+
+        List<ParkingLot> parkingLots2 = new LinkedList<>();
+        parkingLots2.add(parkingLot2); //5
+        parkingLots2.add(parkingLot3); //2
+
+        List<ParkingLot> parkingLots3 = new LinkedList<>();
+        parkingLots3.add(parkingLot1); //10
+
+        List<ParkingLot> parkingLots4 = new LinkedList<>();
+        parkingLots4.add(parkingLot3); //2
+
+        SuperSmartParkingBoy parkingBoy1 = new SuperSmartParkingBoy(parkingLots1);
+        SmartParkingBoy parkingBoy2 = new SmartParkingBoy(parkingLots2);
+        ParkingBoy parkingBoy3 = new ParkingBoy(parkingLots3);
+
+        List<ParkingBoy> parkingBoys = new LinkedList<>();
+        parkingBoys.add(parkingBoy1);
+        parkingBoys.add(parkingBoy2);
+        parkingBoys.add(parkingBoy3);
+
+        ServiceManager serviceManager = new ServiceManager(parkingLots4, parkingBoys);
+
+        //when
+        ParkingTicket parkingTicket1 = serviceManager.park(parkingBoy1, car);
+        ParkingTicket parkingTicket2 = serviceManager.park(parkingBoy2, car);
+        ParkingTicket parkingTicket3 = serviceManager.park(parkingBoy3, car);
+        ParkingTicket parkingTicket4 = serviceManager.park(parkingBoy2, car);
+        ParkingTicket parkingTicket5 = serviceManager.park(parkingBoy1, car);
+        ParkingTicket parkingTicket6 = serviceManager.park(parkingBoy2, car);
+        ParkingTicket parkingTicket7 = serviceManager.park(parkingBoy2, car);
+        ParkingTicket parkingTicket8 = serviceManager.park(car);
+        car = serviceManager.fetch(parkingTicket8);
+
+
+        //then
+        assertEquals(8, parkingLot1.getCurrentCapacity());
+        assertEquals(1, parkingLot2.getCurrentCapacity());
         assertEquals(1, parkingLot3.getCurrentCapacity());
     }
 }
