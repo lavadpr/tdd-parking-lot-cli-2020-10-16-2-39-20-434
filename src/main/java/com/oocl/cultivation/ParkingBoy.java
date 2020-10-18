@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ParkingBoy {
     List<ParkingLot> parkingLots;
@@ -10,22 +11,17 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        if(parkingLots != null) {
-            ParkingLot parkingLot = parkingLots.stream()
-                    .filter(currentParkingLot -> currentParkingLot.getCurrentCapacity() != 0)
-                    .findFirst()
-                    .orElse(null);
-            return parkWithFullException(parkingLot, car);
+        if (parkingLots != null) {
+            return parkWithFullException(
+                    getParkingLot(currentParkingLot -> currentParkingLot.getCurrentCapacity() != 0), car);
         }
         throw new ParkingException("Parking boy has no parking lot");
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
         if (parkingTicket != null) {
-            ParkingLot parkingLot = parkingLots.stream()
-                    .filter(currentParkingLot -> currentParkingLot.getTicketCarMap().get(parkingTicket) != null)
-                    .findFirst()
-                    .orElse(null);
+            ParkingLot parkingLot =
+                    getParkingLot(currentParkingLot -> currentParkingLot.getTicketCarMap().get(parkingTicket) != null);
             if (parkingLot != null) {
                 return parkingLot.fetch(parkingTicket);
             }
@@ -41,5 +37,12 @@ public class ParkingBoy {
             }
         }
         throw new ParkingException("Not enough position.");
+    }
+
+    private ParkingLot getParkingLot(Predicate<ParkingLot> parkingLot) {
+        return parkingLots.stream()
+                .filter(parkingLot)
+                .findFirst()
+                .orElse(null);
     }
 }
