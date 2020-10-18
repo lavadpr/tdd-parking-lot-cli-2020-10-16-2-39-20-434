@@ -39,7 +39,6 @@ public class ParkingBoy {
             if (parkingLot.getCurrentCapacity() != 0) {
                 return parkingLot.park(car);
             }
-            throw new ParkingException("Not enough position.");
         }
         throw new ParkingException("Not enough position.");
     }
