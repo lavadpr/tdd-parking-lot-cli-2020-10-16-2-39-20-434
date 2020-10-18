@@ -398,4 +398,36 @@ class ParkingBoyTest {
         assertEquals(1, parkingLot2.getCurrentCapacity());
         assertEquals(1, parkingLot3.getCurrentCapacity());
     }
+
+    @Test
+    void should_throw_no_parking_lot_when_parking__given_service_manager_not_parking_boy() {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(10);
+        ParkingLot parkingLot2 = new ParkingLot(5);
+        ParkingLot parkingLot3 = new ParkingLot(2);
+        List<ParkingLot> parkingLots1 = new LinkedList<>();
+        parkingLots1.add(parkingLot1);
+        parkingLots1.add(parkingLot2);
+        parkingLots1.add(parkingLot3);
+        List<ParkingLot> parkingLots2 = new LinkedList<>();
+        parkingLots2.add(parkingLot2);
+        parkingLots2.add(parkingLot3);
+        List<ParkingLot> parkingLots3 = new LinkedList<>();
+        parkingLots3.add(parkingLot1);
+        SuperSmartParkingBoy parkingBoy1 = new SuperSmartParkingBoy(parkingLots1);
+        SmartParkingBoy parkingBoy2 = new SmartParkingBoy(parkingLots2);
+        ParkingBoy parkingBoy3 = new ParkingBoy(parkingLots3);
+        List<ParkingBoy> parkingBoys = new LinkedList<>();
+        parkingBoys.add(parkingBoy1);
+        parkingBoys.add(parkingBoy2);
+        parkingBoys.add(parkingBoy3);
+        ServiceManager serviceManager = new ServiceManager(null, parkingBoys);
+
+        //when
+        //then
+        assertEquals("Parking boy has no parking lot", assertThrows(ParkingException.class, () -> {
+            serviceManager.park(car);
+        }).getMessage());
+    }
 }
