@@ -10,11 +10,14 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingLot parkingLot = parkingLots.stream()
-                .filter(currentParkingLot -> currentParkingLot.getCurrentCapacity() != 0)
-                .findFirst()
-                .orElse(null);
-        return parkWithFullException(parkingLot, car);
+        if(parkingLots != null) {
+            ParkingLot parkingLot = parkingLots.stream()
+                    .filter(currentParkingLot -> currentParkingLot.getCurrentCapacity() != 0)
+                    .findFirst()
+                    .orElse(null);
+            return parkWithFullException(parkingLot, car);
+        }
+        throw new ParkingException("Parking boy has no parking lot");
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
