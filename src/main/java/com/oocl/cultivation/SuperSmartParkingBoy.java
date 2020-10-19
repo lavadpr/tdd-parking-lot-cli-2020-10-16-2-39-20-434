@@ -10,7 +10,9 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingLot parkingLot = parkingLots.stream().max(Comparator.comparing(ParkingLot::getCurrentTotalRatio)).get();
+        ParkingLot parkingLot = parkingLots.stream()
+                .max(Comparator.comparing(ParkingLot::getCurrentTotalRatio))
+                .get();
         return parkInGivenParkingLot(parkingLot, car);
     }
 }
