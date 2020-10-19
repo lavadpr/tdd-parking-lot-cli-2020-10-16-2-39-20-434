@@ -11,17 +11,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyTest {
-    Car firstCar;
-    Car firstFetchedCar;
-    ParkingLot parkingLotWith10Capacity;
-    ParkingLot parkingLotWith1Capacity;
-    List<ParkingLot> parkingLotsWithLotWith10Capacity;
-    List<ParkingLot> parkingLotsWithLotWith1Capacity;
-    List<ParkingLot> parkingLots;
-    ParkingBoy parkingBoyFor10CapacityLot;
-    ParkingBoy parkingBoyFor1CapacityLot;
-    ParkingBoy parkingBoy;
-    ParkingTicket parkingTicket;
+    private Car firstCar;
+    private Car firstFetchedCar;
+    private ParkingLot parkingLotWith10Capacity;
+    private ParkingLot parkingLotWith1Capacity;
+    private List<ParkingLot> parkingLotsWithLotWith10Capacity;
+    private List<ParkingLot> parkingLotsWithLotWith1Capacity;
+    private List<ParkingLot> parkingLots;
+    private ParkingBoy parkingBoyFor10CapacityLot;
+    private ParkingBoy parkingBoyFor1CapacityLot;
+    private ParkingBoy parkingBoy;
+    private ParkingTicket parkingTicket;
 
     @BeforeEach
     void setup(){

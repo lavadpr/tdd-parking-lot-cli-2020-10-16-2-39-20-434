@@ -9,12 +9,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SuperSmartParkingBoyTest {
-    Car car;
-    ParkingLot parkingLotWith10Capacity;
-    ParkingLot parkingLotWith5Capacity;
-    ParkingLot parkingLotWith1Capacity;
-    List<ParkingLot> parkingLots;
-    SuperSmartParkingBoy parkingBoy;
+    private Car car;
+    private ParkingLot parkingLotWith10Capacity;
+    private ParkingLot parkingLotWith5Capacity;
+    private ParkingLot parkingLotWith1Capacity;
+    private List<ParkingLot> parkingLots;
+    private SuperSmartParkingBoy parkingBoy;
 
     @BeforeEach
     void setUp(){
