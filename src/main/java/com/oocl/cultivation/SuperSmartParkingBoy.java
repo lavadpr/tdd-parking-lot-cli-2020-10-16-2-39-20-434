@@ -11,6 +11,6 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     public ParkingTicket park(Car car) {
         ParkingLot parkingLot = parkingLots.stream().max(Comparator.comparing(ParkingLot::getCurrentTotalRatio)).get();
-        return parkWithFullException(parkingLot, car);
+        return parkInGivenParkingLot(parkingLot, car);
     }
 }

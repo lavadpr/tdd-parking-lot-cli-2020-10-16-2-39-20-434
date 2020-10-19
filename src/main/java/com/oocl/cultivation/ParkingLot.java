@@ -1,13 +1,15 @@
 package com.oocl.cultivation;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ParkingLot {
-    private Map<ParkingTicket, Car> ticketCarMap = new HashMap<>();
+    private Map<ParkingTicket, Car> ticketCarMap = new ConcurrentHashMap<>();
     private int currentCapacity;
     private final int totalCapacity;
 
+    //TODO separate test files
+    //TODO sequence methods
     Map<ParkingTicket, Car> getTicketCarMap() {
         return ticketCarMap;
     }

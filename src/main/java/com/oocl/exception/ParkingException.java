@@ -1,7 +1,7 @@
-package com.oocl.cultivation;
+package com.oocl.exception;
 
 public class ParkingException extends RuntimeException {
-    ParkingException(String message) {
+    public ParkingException(String message) {
         super(message);
     }
 }

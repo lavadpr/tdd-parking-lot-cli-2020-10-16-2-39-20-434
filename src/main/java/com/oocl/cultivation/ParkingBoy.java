@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.exception.ParkingException;
+
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -12,9 +14,11 @@ public class ParkingBoy {
 
     public ParkingTicket park(Car car) {
         if (parkingLots != null) {
-            return parkWithFullException(
+            ParkingTicket parkingTicket = parkInGivenParkingLot(
                     getParkingLot(currentParkingLot -> currentParkingLot.getCurrentCapacity() != 0), car);
+            return parkingTicket;
         }
+        //TODO exception message as constant
         throw new ParkingException("Parking boy has no parking lot");
     }
 
@@ -29,8 +33,7 @@ public class ParkingBoy {
         }
         throw new ParkingException("Please provide your parking ticket");
     }
-
-    ParkingTicket parkWithFullException(ParkingLot parkingLot, Car car) {
+    ParkingTicket parkInGivenParkingLot(ParkingLot parkingLot, Car car) {
         if (parkingLot != null) {
             if (parkingLot.getCurrentCapacity() != 0) {
                 return parkingLot.park(car);
