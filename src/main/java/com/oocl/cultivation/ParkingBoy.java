@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import com.oocl.exception.ParkingException;
+import com.oocl.exception.ParkingExceptionMessages;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -18,8 +19,7 @@ public class ParkingBoy {
                     getParkingLot(currentParkingLot -> currentParkingLot.getCurrentCapacity() != 0), car);
             return parkingTicket;
         }
-        //TODO exception message as constant
-        throw new ParkingException("Parking boy has no parking lot");
+        throw new ParkingException(ParkingExceptionMessages.NO_PARKING_LOT_FROM_PARKING_BOY);
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
@@ -29,9 +29,9 @@ public class ParkingBoy {
             if (parkingLot != null) {
                 return parkingLot.fetch(parkingTicket);
             }
-            throw new ParkingException("Unrecognized Parking Ticket");
+            throw new ParkingException(ParkingExceptionMessages.UNRECOGNIZED_PARKING_TICKET);
         }
-        throw new ParkingException("Please provide your parking ticket");
+        throw new ParkingException(ParkingExceptionMessages.NO_PARKING_TICKET);
     }
     ParkingTicket parkInGivenParkingLot(ParkingLot parkingLot, Car car) {
         if (parkingLot != null) {
@@ -39,7 +39,7 @@ public class ParkingBoy {
                 return parkingLot.park(car);
             }
         }
-        throw new ParkingException("Not enough position.");
+        throw new ParkingException(ParkingExceptionMessages.FULL_PARKING_LOTS);
     }
 
     private ParkingLot getParkingLot(Predicate<ParkingLot> parkingLot) {

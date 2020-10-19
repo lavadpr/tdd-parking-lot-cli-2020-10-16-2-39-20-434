@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import com.oocl.exception.ParkingException;
+import com.oocl.exception.ParkingExceptionMessages;
 
 import java.util.List;
 
@@ -25,7 +26,8 @@ public class ServiceManager extends ParkingBoy{
 
     private void throwExceptionIfParkingBoyNotInList(ParkingBoy parkingBoy){
         boolean isParkingBoyInManagementList = parkingBoys.stream().anyMatch(currentParkingBoy -> currentParkingBoy == parkingBoy);
-        if(!isParkingBoyInManagementList)
-            throw new ParkingException("Parking boy not in management list");
+        if(!isParkingBoyInManagementList) {
+            throw new ParkingException(ParkingExceptionMessages.NO_PARKING_BOY_IN_MANAGEMENT_LIST);
+        }
     }
 }
