@@ -8,18 +8,6 @@ public class ParkingLot {
     private int currentCapacity;
     private final int totalCapacity;
 
-    Map<ParkingTicket, Car> getTicketCarMap() {
-        return ticketCarMap;
-    }
-
-    double getCurrentTotalRatio() {
-        return (double) currentCapacity / (double) totalCapacity;
-    }
-
-    public int getCurrentCapacity() {
-        return currentCapacity;
-    }
-
     public ParkingLot(int currentCapacity) {
         this.currentCapacity = currentCapacity;
         totalCapacity = currentCapacity;
@@ -28,6 +16,18 @@ public class ParkingLot {
     public ParkingLot() {
         currentCapacity = 10;
         totalCapacity = currentCapacity;
+    }
+
+    public int getCurrentCapacity() {
+        return currentCapacity;
+    }
+
+    double getCurrentTotalRatio() {
+        return (double) currentCapacity / (double) totalCapacity;
+    }
+
+    Map<ParkingTicket, Car> getTicketCarMap() {
+        return ticketCarMap;
     }
 
     ParkingTicket park(Car car) {
@@ -43,5 +43,4 @@ public class ParkingLot {
         currentCapacity++;
         return car;
     }
-
 }
