@@ -33,11 +33,10 @@ public class ParkingBoy {
         }
         throw new ParkingException(ParkingExceptionMessages.NO_PARKING_TICKET);
     }
+
     ParkingTicket parkInGivenParkingLot(ParkingLot parkingLot, Car car) {
-        if (parkingLot != null) {
-            if (parkingLot.getCurrentCapacity() != 0) {
-                return parkingLot.park(car);
-            }
+        if (parkingLot != null && parkingLot.getCurrentCapacity() != 0) {
+            return parkingLot.park(car);
         }
         throw new ParkingException(ParkingExceptionMessages.FULL_PARKING_LOTS);
     }

@@ -8,8 +8,6 @@ public class ParkingLot {
     private int currentCapacity;
     private final int totalCapacity;
 
-    //TODO separate test files
-    //TODO sequence methods
     Map<ParkingTicket, Car> getTicketCarMap() {
         return ticketCarMap;
     }
@@ -31,7 +29,6 @@ public class ParkingLot {
         currentCapacity = 10;
         totalCapacity = currentCapacity;
     }
-
 
     ParkingTicket park(Car car) {
         ParkingTicket ticket = new ParkingTicket();
