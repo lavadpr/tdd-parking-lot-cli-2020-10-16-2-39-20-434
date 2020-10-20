@@ -19,17 +19,17 @@ public class ServiceManager extends ParkingBoy{
         this.parkingBoys = parkingBoys;
     }
 
-    public ParkingTicket park(ParkingBoy parkingBoy, Car car) {
-        throwExceptionIfParkingBoyNotInList(parkingBoy);
-        return parkingBoy.park(car);
-    }
-
     public List<ParkingBoy> getParkingBoys() {
         return parkingBoys;
     }
 
     public void addParkingBoyInList(ParkingBoy parkingBoy) {
         parkingBoys.add(parkingBoy);
+    }
+
+    public ParkingTicket park(ParkingBoy parkingBoy, Car car) {
+        throwExceptionIfParkingBoyNotInList(parkingBoy);
+        return parkingBoy.park(car);
     }
 
     public Car fetch(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
