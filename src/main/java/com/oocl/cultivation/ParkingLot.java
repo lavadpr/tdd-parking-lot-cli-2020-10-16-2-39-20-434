@@ -5,26 +5,23 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ParkingLot {
     private Map<ParkingTicket, Car> ticketCarMap = new ConcurrentHashMap<>();
-    private int currentCapacity;
     private final int totalCapacity;
-    public static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
 
-    public ParkingLot(int currentCapacity) {
-        this.currentCapacity = currentCapacity;
-        totalCapacity = currentCapacity;
+    public ParkingLot(int totalCapacity) {
+        this.totalCapacity = totalCapacity;
     }
 
     public ParkingLot() {
-        currentCapacity = DEFAULT_CAPACITY;
-        totalCapacity = currentCapacity;
+        totalCapacity = DEFAULT_CAPACITY;
     }
 
     public int getCurrentCapacity() {
-        return currentCapacity;
+        return totalCapacity - ticketCarMap.size();
     }
 
     double getCurrentTotalRatio() {
-        return (double) currentCapacity / (double) totalCapacity;
+        return (double) getCurrentCapacity() / (double) totalCapacity;
     }
 
     Map<ParkingTicket, Car> getTicketCarMap() {
@@ -34,14 +31,12 @@ public class ParkingLot {
     ParkingTicket park(Car car) {
         ParkingTicket ticket = new ParkingTicket();
         ticketCarMap.put(ticket, car);
-        currentCapacity--;
         return ticket;
     }
 
     Car fetch(ParkingTicket parkingTicket) {
         Car car = ticketCarMap.get(parkingTicket);
         ticketCarMap.remove(parkingTicket);
-        currentCapacity++;
         return car;
     }
 }
