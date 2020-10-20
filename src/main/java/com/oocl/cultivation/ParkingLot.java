@@ -7,6 +7,7 @@ public class ParkingLot {
     private Map<ParkingTicket, Car> ticketCarMap = new ConcurrentHashMap<>();
     private int currentCapacity;
     private final int totalCapacity;
+    public static final int DEFAULT_CAPACITY = 10;
 
     public ParkingLot(int currentCapacity) {
         this.currentCapacity = currentCapacity;
@@ -14,7 +15,7 @@ public class ParkingLot {
     }
 
     public ParkingLot() {
-        currentCapacity = 10;
+        currentCapacity = DEFAULT_CAPACITY;
         totalCapacity = currentCapacity;
     }
 
