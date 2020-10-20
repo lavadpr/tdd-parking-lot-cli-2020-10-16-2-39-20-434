@@ -44,10 +44,22 @@ public class ServiceManagerTest {
         parkingBoyList.add(smartParkingBoy);
         parkingBoyList.add(superSmartParkingBoy);
     }
+
+    @Test
+    void should_correct_count_when_add_parking_boy_given_service_manager_not_parking_boy() {
+        //given
+        ServiceManager serviceManager = new ServiceManager(parkingBoyList);
+        ParkingBoy extraParkingBoy = new ParkingBoy(null);
+        //when
+        serviceManager.addParkingBoyInList(extraParkingBoy);
+        //then
+        assertEquals(4, serviceManager.getParkingBoys().size());
+    }
+
     @Test
     void should_throw_no_parking_lot_when_parking_given_service_manager_not_parking_boy() {
         //given
-        ServiceManager serviceManager = new ServiceManager(null, parkingBoyList);
+        ServiceManager serviceManager = new ServiceManager(parkingBoyList);
 
         //when
         //then
@@ -60,7 +72,7 @@ public class ServiceManagerTest {
     @Test
     void should_current_capacity_when_parking_and_fetching_given_service_manager_not_parking_boy() {
         //given
-        ServiceManager serviceManager = new ServiceManager(null, parkingBoyList);
+        ServiceManager serviceManager = new ServiceManager(parkingBoyList);
 
         //when
         serviceManager.fetch(parkingBoy, serviceManager.park(parkingBoy, car));
